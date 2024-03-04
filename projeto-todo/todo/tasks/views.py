@@ -1,15 +1,32 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
+from .forms import TaskForm
 
 from .models import Task
 
+#mostrar a lista de tarefas
 def taskList(request):
-    tasks = Task.objects.all() #Pega todos os objetos
+    tasks = Task.objects.all().order_by('-created_at') #ordenar por data de criação, mais novo para o mais antigo
     return render(request, 'tasks/list.html', {'tasks':tasks})
 
+#para ver os detalhes daquela tarefa
 def taskView(request, id):
     task = get_object_or_404(Task, pk=id)
     return render(request, 'tasks/task.html', {'task': task})
+
+#criar nova tarefa
+def newTask(request):
+    if request.method == 'POST':
+        form = TaskForm(request.POST) #variável para chamar o formulário
+        
+        if form.is_valid():
+            task = form.save(commit=False) #ele vai parar o processo de inserção de dados e vai esperar o comando de salvar
+            task.done = 'doing'
+            task.save()
+            return redirect('/')
+    else:
+        form = TaskForm()
+        return render(request, 'tasks/addtask.html', {'form': form})
 
 def helloWorld(request):
     return HttpResponse('Hello World!')
