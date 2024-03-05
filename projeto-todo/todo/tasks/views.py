@@ -1,32 +1,53 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .forms import TaskForm
+from django.contrib import messages
 
 from .models import Task
 
-#mostrar a lista de tarefas
 def taskList(request):
-    tasks = Task.objects.all().order_by('-created_at') #ordenar por data de criação, mais novo para o mais antigo
+    tasks = Task.objects.all().order_by('-created_at')
     return render(request, 'tasks/list.html', {'tasks':tasks})
 
-#para ver os detalhes daquela tarefa
 def taskView(request, id):
     task = get_object_or_404(Task, pk=id)
     return render(request, 'tasks/task.html', {'task': task})
 
-#criar nova tarefa
 def newTask(request):
     if request.method == 'POST':
-        form = TaskForm(request.POST) #variável para chamar o formulário
+        form = TaskForm(request.POST)
         
-        if form.is_valid():
-            task = form.save(commit=False) #ele vai parar o processo de inserção de dados e vai esperar o comando de salvar
+        if form.is_valid(): #Segundo os requerimentos que colocamos
+            task = form.save(commit=False)
             task.done = 'doing'
             task.save()
             return redirect('/')
     else:
         form = TaskForm()
         return render(request, 'tasks/addtask.html', {'form': form})
+
+def editTask(request, id):
+    task = get_object_or_404(Task, pk=id)
+    form = TaskForm(instance=task) #isso vai ajudar o formulário pré formulado 
+
+    if(request.method == 'POST'):
+        form = TaskForm(request.POST, instance=task)
+
+        if(form.is_valid()): 
+            task.save()
+            return redirect('/')
+        else:
+            return render(request, 'task/edittask.html', {'form': form, 'task': task})
+    else:
+        return render(request, 'tasks/edittask.html', {'form': form, 'task': task})
+
+def deleteTask(request, id):
+    task = get_object_or_404(Task, pk=id)
+    task.delete()
+
+    messages.info(request, 'Tarefa deletada com sucesso.') #apresentar uma mensagem de que foi deletado
+
+    return redirect('/')
 
 def helloWorld(request):
     return HttpResponse('Hello World!')
