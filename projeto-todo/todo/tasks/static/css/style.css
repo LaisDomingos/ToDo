@@ -48,9 +48,9 @@
 /* Search */
 
 .fas.fa-search {
-    margin-top: 11.5px;
-    margin-left: 5px;
-    margin-right: 5px;
+    position: absolute;
+    top: 12px;
+    right: 26px;
 }
 
 .search-div {
@@ -108,11 +108,28 @@ footer p {
     position: relative;
 }
 
-/*Mensagens*/
+/* Messages */
+
 ul.messages {
     padding: 0;
 }
 
 ul.messages li {
-    list-style: none !important;
+    list-style: none;
+}
+
+/* Paginação */
+.pagination {
+    margin-bottom: 20px;
+}
+
+.step-links {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.step-links .current {
+    margin-left: 5px;
+    margin-right: 5px;
 }
