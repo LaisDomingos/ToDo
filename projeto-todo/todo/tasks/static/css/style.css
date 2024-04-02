@@ -46,11 +46,14 @@
 }
 
 /* Search */
-
+.form-control{
+    width: 770px;
+}
 .fas.fa-search {
     position: absolute;
     top: 12px;
     right: 26px;
+    cursor: pointer;
 }
 
 .search-div {
