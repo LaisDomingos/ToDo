@@ -7,7 +7,7 @@ from django.contrib import messages
 
 from .models import Task
 
-@login_required
+@login_required #só usuários autenticados tem acesso
 def taskList(request):
 
     search = request.GET.get('search')
@@ -67,6 +67,19 @@ def deleteTask(request, id):
     task.delete()
 
     messages.info(request, 'Tarefa deletada com sucesso.') #apresentar uma mensagem de que foi deletado
+
+    return redirect('/')
+
+@login_required
+def changeStatus(request, id):
+    task = get_object_or_404(Task, pk=id)
+
+    if(task.done == 'doing'):
+        task.done = 'done'
+    else:
+        task.done = 'doing'
+
+    task.save()
 
     return redirect('/')
 
