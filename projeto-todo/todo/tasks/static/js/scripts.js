@@ -3,7 +3,7 @@ $( document ).ready(function() {
     var deleteBtn = $('.delete-btn'); //seleciona o botão de deletar
     var searchBtn = $('#search-btn'); //seleciona o botão de search
     var searchForm = $('#search-form'); //seleciona o form de search
-    
+
     $(deleteBtn).on('click', function(e) { //Uma função que vai ativar quando o botão deletar for clicado
 
 
