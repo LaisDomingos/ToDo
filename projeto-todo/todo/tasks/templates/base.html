@@ -23,17 +23,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/">Tarefas</a>
                     </li>
-                    <li class="nav-item">
-                            <a class="nav-link" href="#">Usuários</a>
-                        </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="/accounts/login">Entrar</a>
                     </li>
                     {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre</a>
-                    </li>
                     {% if user.is_authenticated %}
                     <form action="{% url 'logout' %}" method="post">
                         {% csrf_token %}
