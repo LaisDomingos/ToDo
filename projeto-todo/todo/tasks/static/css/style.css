@@ -24,9 +24,52 @@
     letter-spacing: 1px;
 }
 
+/* dashboard */
+.dashboard {
+    padding: 0;
+    width: 100%;
+    display: block;
+}
+
+.dashboard h4 {
+    font-size: 20px;
+}
+
+.dashboard span {
+    font-size: 40px;
+    display: block;
+    width: 100%;
+}
+
+.dashboard-box {
+    float: left;
+    background-color: #DFDFDF;
+    color: #FFF;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 130px;
+    width: 32%;
+    text-align: center;
+}
+
+.dashboard-box:nth-child(2) {
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+
+#dashboard-lastdays {
+    background-color: #1478e3;
+}
+
+#dashboard-done {
+    background-color: #0d6e04;
+}
+
+#dashboard-doing {
+    background-color: #730505;
+}
+
 /* Botão de adicionar */
-
-
 #add-link {
     text-decoration: none;
 }
@@ -79,12 +122,13 @@
     list-style: none;
     font-size: 20px;
     height: 50px;
+    padding: 0 15px;
     padding-top: 10px;
     border-bottom: 1px dashed #CCC;
 }
 
 .task-item.done {
-    background-color: #CCC;
+    background-color: #d5f5e4
 }  
 
 .fas.fa-trash {
@@ -163,4 +207,52 @@ ul.messages li {
 .change-form-p {
     margin-top: 30px;
     text-align: center;
+}
+
+/*Add Task*/
+.taskFormulario input,
+.taskFormulario textarea{
+    width: 100%;
+}
+.btn-success{
+    margin: 5px;
+}
+
+/* Estilo para o contêiner principal de tasks*/
+.tarefas {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+/* Estilo para o título da tarefa */
+.taskTitulo {
+    color:  #3476e2;;
+    margin-bottom: 10px;
+
+}
+
+/* Estilo para a descrição da tarefa */
+.tarefas p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.tarefas span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.tarefas h1,
+.tarefas p {
+    margin-bottom: 15px;
+}
+
+.loginFormulario input,
+.loginFormulario button{
+    width: 100%;
 }
