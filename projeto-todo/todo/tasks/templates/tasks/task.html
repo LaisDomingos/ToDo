@@ -3,8 +3,10 @@
 {% block title %}Lista de Tarefas{% endblock %}
 
 {% block conteudo %}
+<div class='tarefas'>
 <div class="offset-1 col-10 list-div">
-    <h1>{{task.title}}</h1>
-    <p>{{task.description}}</p>
+    <h1 class='taskTitulo'>{{task.title}}</h1>
+    <p><span class='descricao'>Descrição: </span>{{task.description}}</p>
+</div>
 </div>
 {% endblock %}
