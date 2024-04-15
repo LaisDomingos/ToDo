@@ -9,7 +9,7 @@
             <div class="card-body">
                 <h4 class="card-title text-center">Entrar no To Do List</h4>
         
-                <form method="post">
+                <form class='loginFormulario' method="post">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ next }}">
         
