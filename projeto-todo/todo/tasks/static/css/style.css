@@ -9,6 +9,7 @@
 .navbar  {
     border-bottom: 1px solid #333;
     margin-bottom: 20px;
+    font-size: 20px;
 }
 
 .navbar-nav {
@@ -17,6 +18,9 @@
 
 .navbar-brand {
     font-weight: bold;
+    margin-left: 45px;
+    font-size: 25px;
+    color: #0c0573;
 }
 
 .navbar-light .navbar-nav a.nav-link {
